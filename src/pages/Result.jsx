@@ -8,13 +8,16 @@ import TrainList from '../components/TrainList';
 import CustomNavbar from '../components/Navbar';
 import CustomFooter from '../components/Footer';
 
+// Importing the environment variable
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 function Results() {
   const location = useLocation();
   const { source, destination, startDate, endDate, budget, interests } = location.state;
   const [plan, setPlan] = useState(null);
 
   useEffect(() => {
-    axios.post('https://travel-planner-ai-agent-1.onrender.com/api/generate-plan', {
+    axios.post(`${API_BASE_URL}/api/generate-plan`, {   // Using the environment variable here
       source,
       destination,
       startDate,

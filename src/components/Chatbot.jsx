@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Button, Card, Form, InputGroup } from 'react-bootstrap';
 import axios from 'axios';
 
+// Importing the environment variable
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -24,7 +27,7 @@ function Chatbot() {
     setUserInput('');
 
     try {
-      const response = await axios.post('https://travel-planner-ai-agent-1.onrender.com/api/chat', { message: userInput });
+      const response = await axios.post(`${API_BASE_URL}/api/chat`, { message: userInput });
       const cleanedResponse = cleanResponse(response.data.response);
 
       setMessages((prev) => [...prev, { text: cleanedResponse, sender: 'bot' }]);
