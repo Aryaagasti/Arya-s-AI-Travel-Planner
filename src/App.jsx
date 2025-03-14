@@ -11,8 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/results" element={<Results />} />
-        <Route path="https://arya-s-ai-travel-planner.onrender.com/about" element={<About />} />
-        <Route path="https://arya-s-ai-travel-planner.onrender.com/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );
